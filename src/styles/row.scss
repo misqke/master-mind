@@ -1,0 +1,28 @@
+@import "./variables.scss";
+
+.row_container {
+  @include flexContainer(row);
+  gap: 5px;
+}
+
+.row_square {
+  @include flexContainer(row);
+  min-width: 50px;
+  min-height: 50px;
+  background-color: #555;
+}
+
+.row_circle {
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+.row_check {
+  @include flexContainer(row);
+  min-width: 50px;
+  min-height: 50px;
+  background-color: #555;
+  margin-left: 1rem;
+}

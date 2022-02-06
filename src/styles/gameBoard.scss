@@ -1,0 +1,13 @@
+@import "./variables.scss";
+
+.gameBoard_container {
+  @include flexContainer(column);
+  margin: 85px auto;
+  justify-content: start;
+  min-height: calc(100vh - 170px);
+  gap: 5px;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
+}
