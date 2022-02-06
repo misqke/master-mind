@@ -36,7 +36,26 @@ const Row = ({ row }) => {
           ></div>
         )}
       </div>
-      <div className="row_check"></div>
+      <div className="row_check">
+        {row.length > 4 &&
+          row[4].exact.length > 0 &&
+          row[4].exact.map((i) => (
+            <div
+              className="marker"
+              key={Math.random() + Math.random()}
+              style={{ backgroundColor: "#000" }}
+            ></div>
+          ))}
+        {row.length > 4 &&
+          row[4].close.length > 0 &&
+          row[4].close.map((i) => (
+            <div
+              className="marker"
+              key={Math.random() + Math.random()}
+              style={{ backgroundColor: "#ddd" }}
+            ></div>
+          ))}
+      </div>
     </div>
   );
 };

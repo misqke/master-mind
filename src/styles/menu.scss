@@ -1,0 +1,29 @@
+@import "./variables.scss";
+
+.menu_container {
+  @include flexContainer(column);
+  min-height: calc(100vh - 170px);
+  gap: 10px;
+  color: #fff;
+}
+
+.menu_row {
+  @include flexContainer(row);
+  gap: 5px;
+}
+
+.menu_circle {
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+button {
+  background-color: #555;
+  color: #fff;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}

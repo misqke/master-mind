@@ -3,6 +3,41 @@
 .App {
   @include flexContainer(column);
   width: 100vw;
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   background-color: $bg;
+  position: relative;
+  color: #fff;
+}
+
+.header {
+  @include flexContainer(row);
+  width: 100vw;
+  background-color: $bg;
+  position: fixed;
+  padding: 5px;
+  top: 0;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+.help_btn {
+  position: fixed;
+  top: 0.6rem;
+  right: 0.6rem;
+  min-width: 20px;
+  min-height: 20px;
+  z-index: 900;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 500px) {
+  .App {
+    width: 90vw;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .App {
+    width: 70vw;
+  }
 }

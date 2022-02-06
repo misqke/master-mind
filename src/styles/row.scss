@@ -10,6 +10,7 @@
   min-width: 50px;
   min-height: 50px;
   background-color: #555;
+  border-radius: 5px;
 }
 
 .row_circle {
@@ -21,8 +22,18 @@
 
 .row_check {
   @include flexContainer(row);
-  min-width: 50px;
-  min-height: 50px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 50px;
+  height: 50px;
   background-color: #555;
+  border-radius: 5px;
   margin-left: 1rem;
+}
+
+.marker {
+  min-width: 15px;
+  min-height: 15px;
+  border-radius: 50%;
+  margin: 3px;
 }
