@@ -40,7 +40,7 @@ const Help = () => {
         Use the bar at the bottom to fill out the active row and push the check
         button to submit your guess.
       </p>
-      <Row row={sampleRow} />
+      <Row row={sampleRow} options={{ codeLength: 4, colors: 6 }} />
       <p>
         The box to the right of the row will display the response to your guess.
       </p>
