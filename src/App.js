@@ -18,7 +18,7 @@ function App() {
   const playBarFunctions = {
     handleColor: (color) => {
       return () => {
-        if (activeRow.length === Number(options.codeLength) && gameState) {
+        if (activeRow.length === options.codeLength && gameState) {
           return;
         }
         setActiveRow((prev) => [...prev, color]);
@@ -36,7 +36,7 @@ function App() {
     },
     handleSubmit: () => {
       return () => {
-        if (activeRow.length !== Number(options.codeLength)) {
+        if (activeRow.length !== options.codeLength) {
           return;
         } else if (gameState) {
           const res = checkGuess(activeRow, code);
@@ -73,7 +73,7 @@ function App() {
 
   const handleOptionsChange = () => {
     return (e) => {
-      setOptions({ ...options, [e.target.name]: e.target.value });
+      setOptions({ ...options, [e.target.name]: Number(e.target.value) });
     };
   };
 

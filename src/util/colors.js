@@ -22,12 +22,12 @@ export const colors = [
   {
     id: 5,
     color: "blue",
-    code: "#00f",
+    code: "#33f",
   },
   {
     id: 6,
     color: "puprle",
-    code: "#70f",
+    code: "#a0f",
   },
   {
     id: 7,

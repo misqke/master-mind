@@ -32,6 +32,5 @@ export const checkGuess = (guess, code) => {
       close.push(1);
     }
   });
-  console.log("exacts:", exact, "//close:", close);
   return { exact, close };
 };
