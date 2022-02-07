@@ -13,11 +13,12 @@ function App() {
   const [gameState, setGameState] = useState(false);
   const [message, setMessage] = useState("Welcome to Master Mind!");
   const [help, setHelp] = useState(false);
+  const [options, setOptions] = useState({ colors: 6, codeLength: 4 });
 
   const playBarFunctions = {
     handleColor: (color) => {
       return () => {
-        if (activeRow.length === 4 && gameState) {
+        if (activeRow.length === Number(options.codeLength) && gameState) {
           return;
         }
         setActiveRow((prev) => [...prev, color]);
@@ -35,11 +36,11 @@ function App() {
     },
     handleSubmit: () => {
       return () => {
-        if (activeRow.length !== 4) {
+        if (activeRow.length !== Number(options.codeLength)) {
           return;
         } else if (gameState) {
           const res = checkGuess(activeRow, code);
-          if (res.exact.length === 4) {
+          if (res.exact.length === options.codeLength) {
             setGameState(false);
             setMessage(`You win in ${gameBoard.length + 1} guesses!`);
           } else if (gameBoard.length + 1 === 10) {
@@ -62,11 +63,17 @@ function App() {
 
   const handleNewGame = () => {
     return () => {
-      const code = generateCode();
+      const code = generateCode(options);
       setCode(code);
       setGameBoard([]);
       setActiveRow([]);
       setGameState(true);
+    };
+  };
+
+  const handleOptionsChange = () => {
+    return (e) => {
+      setOptions({ ...options, [e.target.name]: e.target.value });
     };
   };
 
@@ -77,11 +84,25 @@ function App() {
         <h1>Master Mind</h1>
       </div>
       {gameState ? (
-        <GameBoard gameBoard={gameBoard} activeRow={activeRow} />
+        <GameBoard
+          gameBoard={gameBoard}
+          activeRow={activeRow}
+          options={options}
+        />
       ) : (
-        <Menu message={message} click={handleNewGame} code={code} />
+        <Menu
+          message={message}
+          click={handleNewGame}
+          code={code}
+          options={options}
+          change={handleOptionsChange}
+        />
       )}
-      <PlayBar clicks={playBarFunctions} activeRow={activeRow} />
+      <PlayBar
+        clicks={playBarFunctions}
+        activeRow={activeRow}
+        options={options}
+      />
       <div className="help_btn" onClick={() => setHelp((prev) => !prev)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -1,58 +1,57 @@
 import React from "react";
 import "../styles/row.scss";
 
-const Row = ({ row }) => {
+const Row = ({ row, options }) => {
+  const squares = [];
+  for (let i = 0; i < options.codeLength; i++) {
+    squares.push(1);
+  }
+
+  const boxStyle = {
+    minWidth: options.codeLength > 4 ? "40px" : "50px",
+    minHeight: options.codeLength > 4 ? "40px" : "50px",
+  };
+
+  const markerStyle = {
+    minWidth: options.codeLength > 4 ? "10px" : "15px",
+    minHeight: options.codeLength > 4 ? "10px" : "15px",
+    backgroundColor: "#000",
+  };
+
+  const circleStyle = {
+    minWidth: options.codeLength > 4 ? "30px" : "40px",
+    minHeight: options.codeLength > 4 ? "30px" : "40px",
+  };
+
   return (
     <div className="row_container">
-      <div className="row_square">
-        {row.length > 0 && (
-          <div
-            className="row_circle"
-            style={{ backgroundColor: `${row[0].code}` }}
-          ></div>
-        )}
-      </div>
-      <div className="row_square">
-        {row.length > 1 && (
-          <div
-            className="row_circle"
-            style={{ backgroundColor: `${row[1].code}` }}
-          ></div>
-        )}
-      </div>
-      <div className="row_square">
-        {row.length > 2 && (
-          <div
-            className="row_circle"
-            style={{ backgroundColor: `${row[2].code}` }}
-          ></div>
-        )}
-      </div>
-      <div className="row_square">
-        {row.length > 3 && (
-          <div
-            className="row_circle"
-            style={{ backgroundColor: `${row[3].code}` }}
-          ></div>
-        )}
-      </div>
-      <div className="row_check">
-        {row.length > 4 &&
-          row[4].exact.length > 0 &&
-          row[4].exact.map((i) => (
+      {squares.map((square, i) => (
+        <div className="row_square" key={i} style={boxStyle}>
+          {row.length > i && (
+            <div
+              className="row_circle"
+              style={{ ...circleStyle, backgroundColor: `${row[i].code}` }}
+            ></div>
+          )}
+        </div>
+      ))}
+      <div className="row_check" style={boxStyle}>
+        {row.length > options.codeLength &&
+          row[options.codeLength].exact.length > 0 &&
+          row[options.codeLength].exact.map(() => (
             <div
               className="marker"
               key={Math.random() + Math.random()}
-              style={{ backgroundColor: "#000" }}
+              style={markerStyle}
             ></div>
           ))}
-        {row.length > 4 &&
-          row[4].close.length > 0 &&
-          row[4].close.map((i) => (
+        {row.length > options.codeLength &&
+          row[options.codeLength].close.length > 0 &&
+          row[options.codeLength].close.map(() => (
             <div
               className="marker"
               key={Math.random() + Math.random()}
-              style={{ backgroundColor: "#ddd" }}
+              style={{ ...markerStyle, backgroundColor: "#fff" }}
             ></div>
           ))}
       </div>

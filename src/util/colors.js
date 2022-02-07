@@ -29,4 +29,9 @@ export const colors = [
     color: "puprle",
     code: "#70f",
   },
+  {
+    id: 7,
+    color: "teal",
+    code: "#0ff",
+  },
 ];

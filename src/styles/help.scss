@@ -2,11 +2,10 @@
 
 .help_container {
   @include flexContainer(column);
-  padding: 1.5rem;
+  padding: 2.5rem 1.5rem;
   width: 100%;
   height: 100vh;
   margin: auto;
-  margin-top: 1rem;
   position: absolute;
   top: 0;
   bottom: 0;

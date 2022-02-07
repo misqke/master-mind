@@ -1,12 +1,13 @@
 import { colors } from "./colors";
 
-export const generateCode = () => {
+export const generateCode = (options) => {
+  const colorList = colors.slice(0, options.colors);
   const code = [];
   const codeColors = [];
-  for (let i = 0; i < 4; i++) {
-    const index = Math.floor(Math.random() * colors.length);
-    code.push(colors[index]);
-    codeColors.push(colors[index].color);
+  for (let i = 0; i < options.codeLength; i++) {
+    const index = Math.floor(Math.random() * colorList.length);
+    code.push(colorList[index]);
+    codeColors.push(colorList[index].color);
   }
   return { code, codeColors };
 };
@@ -31,5 +32,6 @@ export const checkGuess = (guess, code) => {
       close.push(1);
     }
   });
+  console.log("exacts:", exact, "//close:", close);
   return { exact, close };
 };

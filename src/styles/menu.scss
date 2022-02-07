@@ -19,6 +19,19 @@
   border: 2px solid #000;
 }
 
+.menu_options {
+  @include flexContainer(column);
+  label {
+    margin: 5px;
+  }
+  select {
+    margin: 5px;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+  }
+}
+
 button {
   background-color: #555;
   color: #fff;

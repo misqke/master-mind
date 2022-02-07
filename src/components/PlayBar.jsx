@@ -2,11 +2,12 @@ import React from "react";
 import { colors } from "../util/colors";
 import "../styles/playBar.scss";
 
-const PlayBar = ({ clicks, activeRow }) => {
+const PlayBar = ({ clicks, activeRow, options }) => {
+  let colorList = colors.slice(0, options.colors);
   return (
     <div className="playBar_container">
       <div className="playBar_wrapper">
-        {colors.map((color) => (
+        {colorList.map((color) => (
           <div
             className="playBar_btn"
             id={color.id}
@@ -40,7 +41,11 @@ const PlayBar = ({ clicks, activeRow }) => {
           id="submit"
           style={{
             backgroundColor: "#777",
-            border: `${activeRow.length === 4 ? "3px solid #0f0" : "none"}`,
+            border: `${
+              activeRow.length === Number(options.codeLength)
+                ? "3px solid #0f0"
+                : "none"
+            }`,
           }}
           onClick={clicks.handleSubmit()}
         >
@@ -48,7 +53,9 @@ const PlayBar = ({ clicks, activeRow }) => {
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
-            fill={`${activeRow.length === 4 ? "#0f0" : "#fff"}`}
+            fill={`${
+              activeRow.length === Number(options.codeLength) ? "#0f0" : "#fff"
+            }`}
             className="bi bi-check-lg"
             viewBox="0 0 16 16"
           >
