@@ -11,7 +11,7 @@ function App() {
   const [activeRow, setActiveRow] = useState([]);
   const [code, setCode] = useState();
   const [gameState, setGameState] = useState(false);
-  const [message, setMessage] = useState("Welcome to Master Mind!");
+  const [message, setMessage] = useState("Welcome to Mastermind!");
   const [help, setHelp] = useState(false);
   const [options, setOptions] = useState({ colors: 6, codeLength: 4 });
 
@@ -81,7 +81,7 @@ function App() {
     <div className="App">
       {help && <Help />}
       <div className="header">
-        <h1>Master Mind</h1>
+        <h1>Mastermind</h1>
       </div>
       {gameState ? (
         <GameBoard
